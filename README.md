@@ -9,7 +9,6 @@ This is a solution to the [Room homepage challenge on Frontend Mentor](https://w
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
 - [Author](#author)
 
 ## Overview
@@ -24,8 +23,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/room-homepage-TU4roGDM_J](https://www.frontendmentor.io/solutions/room-homepage-TU4roGDM_J)
+- Live Site URL: [https://seranela.github.io/room-homepage/](https://seranela.github.io/room-homepage/)
 
 ## My process
 
@@ -37,8 +36,6 @@ Users should be able to:
 - CSS Grid
 - JavaScript
 - Mobile-first workflow
-
-### What I learned
 
 ## Author
 
