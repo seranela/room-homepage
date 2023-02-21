@@ -212,10 +212,6 @@ p {
 	overflow: hidden;
 }
 
-.hero-pictures-container {
-	background-color: var(--color-primary-very-dark-gray);
-}
-
 .hero-pictures,
 .hero-articles {
 	display: flex;
