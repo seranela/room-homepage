@@ -1,0 +1,463 @@
+/* Variables */
+
+:root {
+	/* Fonts */
+
+	--font-main: 'League Spartan', sans-serif; /* 500, 600, 700 */
+
+	/* Colors */
+
+	--color-primary-white: hsl(0, 0%, 100%);
+	--color-primary-black: hsl(0, 0%, 0%);
+	--color-primary-dark-gray: hsl(0, 0%, 46%);
+	--color-primary-very-dark-gray: hsl(0, 0%, 27%);
+}
+
+/* Resets */
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body,
+h1 {
+	margin: 0;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	min-width: 0;
+	height: auto;
+}
+
+/* Body */
+
+body {
+	background-color: var(--color-primary-white);
+	color: var(--color-primary-dark-gray);
+	font: 500 1rem var(--font-main);
+	text-rendering: optimizeSpeed;
+	min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+	color: var(--color-primary-black);
+	font-weight: 600;
+	margin: 0;
+}
+
+h2 {
+	font-size: 2.6rem;
+	line-height: 0.85;
+	letter-spacing: -0.05em;
+}
+
+h3 {
+	font-size: 0.9rem;
+	font-weight: 700;
+	letter-spacing: 0.35em;
+	text-transform: uppercase;
+}
+
+p {
+	line-height: 1.35;
+}
+
+/* Header */
+
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	padding: 2rem;
+	z-index: 1;
+}
+
+/* Header - Nav */
+
+.menu-button {
+	width: 1.2rem;
+	height: 1.2rem;
+	border: none;
+	background: url(../images/icon-hamburger.svg) center / contain no-repeat;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.menu-button-close {
+	background-image: url(../images/icon-close.svg);
+}
+
+.nav-header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 2rem 1.8rem;
+	transform: translateX(-100%);
+	transform-style: flat;
+	background-color: var(--color-primary-white);
+	transition: none; /* To keep the transition from triggering when hitting breakpoint */
+}
+
+.nav-header-show {
+	transition: transform 0.3s;
+	transform: translateX(0);
+}
+
+@keyframes fade-backdrop {
+	0% {
+		background-color: hsla(0, 0%, 0%, 0%);
+	}
+	100% {
+		background-color: hsla(0, 0%, 0%, 50%);
+	}
+}
+
+.dark-backdrop::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	animation: fade-backdrop 0.3s forwards;
+}
+
+.nav-header-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 1.8em;
+	height: 100%;
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+	text-transform: lowercase;
+}
+
+.nav-header-list > li {
+	text-align: center;
+}
+
+/* Header - Nav Links (Mobile) */
+
+.nav-header-link {
+	color: var(--color-primary-black);
+	display: inline-block;
+	text-decoration: none;
+	position: relative;
+}
+
+.nav-header-link::after {
+	/* Expanding hyperlink underline effect */
+	content: '';
+	position: absolute;
+	bottom: -0.4rem;
+	left: 50%;
+	width: 0;
+	border-bottom: 2px solid var(--color-primary-black);
+	transition: left 0.2s, width 0.2s;
+}
+
+.nav-header-link:hover::after {
+	/* Expanding hyperlink underline effect */
+	left: 25%;
+	width: 50%;
+}
+
+/* Header - Logo */
+
+.logo-container {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* (logo width / 2) Offset adjustment to center logo to middle of design */
+	margin-right: 1.9rem;
+}
+
+.logo {
+	width: 3.8rem;
+}
+
+/* Main */
+
+.main {
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
+/* Hero Images & Articles */
+
+.hero-pictures-container,
+.hero-articles-container {
+	position: relative;
+	/* Even though I have overflow-x set in the next selector,
+	this was needed to resolve additional overflow issues. */
+	overflow: hidden;
+}
+
+.hero-pictures,
+.hero-articles {
+	display: flex;
+	overflow-x: hidden;
+	/* Even though I have object-fit set on the image below,
+	this was needed to insure the image filled the entire
+	grid cell and that object-fit works as intended. */
+	width: 100%;
+	height: 100%;
+}
+
+.hero-picture,
+.hero-article {
+	flex: 1 0 100%;
+	transition: transform 0.5s;
+}
+
+.hero-image,
+.furniture-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.hero-article {
+	padding: 3.8rem 1.8rem 4rem 1.8rem;
+	width: 100%;
+}
+
+/* About */
+
+.about {
+	padding: 3.2rem 1.8rem 1.5rem 1.8rem;
+}
+
+/* Link with Arrow */
+
+.link-with-arrow {
+	display: inline-block;
+	position: relative;
+	color: var(--color-primary-black);
+	font-weight: 600;
+	letter-spacing: 0.7em;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: color 0.3s;
+	margin-top: 1.5em;
+}
+
+.link-with-arrow::after {
+	content: '';
+	position: absolute;
+	right: -75%;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: url(../images/icon-arrow.svg) center / 26% no-repeat;
+	transition: filter 0.3s;
+}
+
+.link-with-arrow:hover {
+	color: var(--color-primary-dark-gray);
+}
+
+.link-with-arrow:hover::after {
+	filter: invert(1) brightness(46%);
+}
+
+/* Cycler */
+
+.hero-pictures-container > .button-cycle-container {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.hero-articles-container > .button-cycle-container {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.button-cycle {
+	background-color: var(--color-primary-black);
+	background-position: center;
+	background-size: 20%;
+	background-repeat: no-repeat;
+	border: none;
+	width: 3.5rem;
+	height: 3.5rem;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.hero-articles-container > .button-cycle-container > .button-cycle {
+	width: 5.5vw;
+	height: 5.5vw;
+}
+
+.button-cycle:hover {
+	background-color: var(--color-primary-very-dark-gray);
+}
+
+.button-cycle-previous {
+	background-image: url(../images/icon-angle-left.svg);
+}
+
+.button-cycle-next {
+	background-image: url(../images/icon-angle-right.svg);
+}
+
+/* Responsive media queries */
+
+@media (min-width: 768px) {
+	/* Body */
+
+	h2 {
+		font-size: 3.2rem;
+		line-height: 0.9;
+	}
+
+	h3 {
+		font-size: 1.1rem;
+	}
+
+	/* Header - Nav */
+
+	.menu-button {
+		display: none;
+	}
+
+	.nav-header {
+		display: block;
+		position: static;
+		background-color: transparent;
+		transform: translateX(0);
+		transition: none; /* To keep the transition from triggering when hitting breakpoint */
+	}
+
+	.nav-header::before {
+		position: static;
+		background-color: transparent;
+	}
+
+	.nav-header-list {
+		justify-content: flex-start;
+	}
+
+	.nav-header-list > li {
+		width: auto;
+	}
+
+	/* Header - Logo */
+
+	.logo-container {
+		flex: unset;
+		justify-content: flex-start;
+		order: -1;
+	}
+
+	/* Header - Nav Links (Desktop) */
+
+	.nav-header-link {
+		color: var(--color-primary-white);
+	}
+
+	.nav-header-link::after {
+		border-bottom: 2px solid var(--color-primary-white);
+	}
+
+	/* Main */
+
+	.main {
+		grid-template-areas:
+			'hero-pictures-container hero-pictures-container hero-articles-container hero-articles-container'
+			'furniture-image-dark about about furniture-image-light';
+		grid-template-columns: 29vw 29vw 11vw 31vw;
+		grid-template-rows: 1fr fit-content(100%);
+	}
+
+	/* Hero Images & Articles */
+
+	.hero-pictures-container {
+		grid-area: hero-pictures-container;
+	}
+
+	.hero-articles-container {
+		grid-area: hero-articles-container;
+	}
+
+	.hero-article {
+		padding: 8.2vw 7.5vw;
+	}
+
+	/* About */
+
+	.about {
+		grid-area: about;
+		padding: 4.5vw 3.2vw 0 3.2vw;
+	}
+
+	/* Link with Arrow */
+
+	.link-with-arrow {
+		margin-top: 0.5em;
+	}
+
+	/* Furniture Images */
+
+	.furniture-image-dark {
+		grid-area: furniture-image-dark;
+	}
+	
+	.furniture-image-light {
+		grid-area: furniture-image-light;
+	}
+
+	/* Cycler */
+
+	.hero-pictures-container > .button-cycle-container {
+		display: none;
+	}
+
+	.hero-articles-container > .button-cycle-container {
+		display: block;
+	}
+}
+
+.hidden {
+	display: none;
+}
+
+/* Screen readers */
+
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	-webkit-clip-path: inset(50%) !important;
+	clip-path: inset(50%) !important;
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;
+}

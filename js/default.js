@@ -1,0 +1,69 @@
+/* --- Mobile Menu --- */
+
+const button = document.querySelector('.menu-button');
+const header = document.querySelector('.header'); // For dark backdrop
+const nav = document.querySelector('.nav-header');
+const navlist = document.querySelector('.nav-header-list');
+
+function resizeUpdate() {
+	if (document.body.offsetWidth >= 768) {
+		header.classList.remove('dark-backdrop');
+		nav.setAttribute('aria-expanded', false);
+		nav.classList.remove('nav-header-show');
+		navlist.classList.remove('nav-header-list-show');
+		button.classList.remove('menu-button-close');
+	}
+}
+
+function toggleMenu() {
+	if (nav.getAttribute('aria-expanded') === 'false') {
+		header.classList.add('dark-backdrop');
+		nav.setAttribute('aria-expanded', true);
+		nav.classList.add('nav-header-show');
+		navlist.classList.add('nav-header-list-show');
+		button.classList.add('menu-button-close');
+		document.body.style.overflow = 'hidden';
+	} else {
+		header.classList.remove('dark-backdrop');
+		nav.setAttribute('aria-expanded', false);
+		nav.classList.remove('nav-header-show');
+		navlist.classList.remove('nav-header-list-show');
+		button.classList.remove('menu-button-close');
+		document.body.style.overflow = 'auto';
+	}
+}
+
+window.addEventListener('resize', resizeUpdate);
+button.addEventListener('click', toggleMenu);
+
+/* --- Hero Cycler --- */
+
+let heroIndex = 0;
+
+const prevButtons = document.querySelectorAll('.button-cycle-previous');
+const nextButtons = document.querySelectorAll('.button-cycle-next');
+const heroPictures = document.querySelectorAll('.hero-picture');
+const heroArticles = document.querySelectorAll('.hero-article');
+
+function cyclePrevious() {
+	heroIndex = (heroIndex === 0 ? 2 : heroIndex - 1);
+	for (let i = 0; i < heroPictures.length; ++i) {
+		heroPictures[i].style.transform = `translateX(${heroIndex * -100}%)`;
+		heroArticles[i].style.transform = `translateX(${heroIndex * -100}%)`;
+	}
+}
+
+function cycleNext() {
+	heroIndex = (heroIndex === 2 ? 0 : heroIndex + 1);
+	for (let i = 0; i < heroPictures.length; ++i) {
+		heroPictures[i].style.transform = `translateX(${heroIndex * -100}%)`;
+		heroArticles[i].style.transform = `translateX(${heroIndex * -100}%)`;
+	}
+}
+
+prevButtons.forEach((button) => {
+	button.addEventListener('click', cyclePrevious);
+});
+nextButtons.forEach((button) => {
+	button.addEventListener('click', cycleNext);
+});
