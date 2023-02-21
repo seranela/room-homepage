@@ -212,6 +212,10 @@ p {
 	overflow: hidden;
 }
 
+.hero-pictures-container {
+	background-color: var(--color-primary-very-dark-gray);
+}
+
 .hero-pictures,
 .hero-articles {
 	display: flex;
@@ -301,6 +305,7 @@ p {
 	background-position: center;
 	background-size: 20%;
 	background-repeat: no-repeat;
+	color: var(--color-primary-white);
 	border: none;
 	width: 3.5rem;
 	height: 3.5rem;
